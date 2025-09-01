@@ -1,0 +1,378 @@
+{
+  "sections": {
+    "General": {
+      "basic": [
+        {
+          "question": "What command displays the current working directory?",
+          "answer": "pwd",
+          "explanation": "The pwd command prints the full pathname of the current working directory, helping users navigate the file system.",
+          "example": "pwd\nOutput: /home/user/documents",
+          "hint": "Stands for 'Print Working Directory'.",
+          "options": ["ls", "cd", "pwd", "echo"],
+          "correctIndex": 2,
+          "link": "https://linux.die.net/man/1/pwd"
+        },
+        {
+          "question": "What command changes the current directory?",
+          "answer": "cd",
+          "explanation": "The cd command navigates to a specified directory in the file system.",
+          "example": "cd /etc\ncd ~ to go to home directory",
+          "hint": "Short for 'Change Directory'.",
+          "options": ["mv", "cd", "ls", "rm"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/cd"
+        },
+        {
+          "question": "What command lists files in the current directory?",
+          "answer": "ls",
+          "explanation": "The ls command lists files and directories in the current or specified directory.",
+          "example": "ls -l for detailed list\nls -a to include hidden files",
+          "hint": "Stands for 'List'.",
+          "options": ["dir", "ls", "find", "pwd"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/ls"
+        }
+      ],
+      "intermediate": [
+        {
+          "question": "What command shows running processes?",
+          "answer": "ps",
+          "explanation": "The ps command displays a snapshot of active processes.",
+          "example": "ps aux to show all processes\nps -ef for extended format",
+          "hint": "Stands for 'Process Status'.",
+          "options": ["top", "ps", "kill", "jobs"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/ps"
+        },
+        {
+          "question": "What command kills a process by ID?",
+          "answer": "kill <PID>",
+          "explanation": "The kill command sends signals to terminate processes by their process ID (PID).",
+          "example": "kill 1234\nkill -9 1234 for force kill",
+          "hint": "-9 is the SIGKILL signal.",
+          "options": ["stop", "kill <PID>", "end", "terminate"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/kill"
+        }
+      ],
+      "advanced": [
+        {
+          "question": "What command displays detailed system information?",
+          "answer": "lscpu",
+          "explanation": "The lscpu command displays CPU architecture information.",
+          "example": "lscpu\nOutput: Architecture: x86_64",
+          "hint": "Lists CPU details.",
+          "options": ["lscpu", "lsblk", "lspci", "lshw"],
+          "correctIndex": 0,
+          "link": "https://linux.die.net/man/1/lscpu"
+        },
+        {
+          "question": "What is the PID of the init process?",
+          "answer": "1",
+          "explanation": "The init process, with PID 1, is the first process started by the kernel.",
+          "example": "ps -p 1\nOutput: init",
+          "hint": "Parent of all processes.",
+          "options": ["0", "1", "2", "10"],
+          "correctIndex": 1,
+          "link": "https://en.wikipedia.org/wiki/Init"
+        }
+      ]
+    },
+    "File System": {
+      "basic": [
+        {
+          "question": "What command checks filesystem usage?",
+          "answer": "df",
+          "explanation": "The df command reports disk space usage for mounted file systems.",
+          "example": "df -h\nOutput: human-readable sizes",
+          "hint": "Disk Free.",
+          "options": ["du", "df", "lsblk", "fdisk"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/df"
+        },
+        {
+          "question": "What command mounts a filesystem?",
+          "answer": "mount",
+          "explanation": "The mount command attaches a file system to a directory.",
+          "example": "mount /dev/sda1 /mnt",
+          "hint": "Needs device and mount point.",
+          "options": ["umount", "fsck", "mount", "mkfs"],
+          "correctIndex": 2,
+          "link": "https://linux.die.net/man/8/mount"
+        }
+      ],
+      "intermediate": [
+        {
+          "question": "What command creates a Linux filesystem?",
+          "answer": "mkfs",
+          "explanation": "The mkfs command formats a partition to create a file system.",
+          "example": "mkfs -t ext4 /dev/sda1",
+          "hint": "Make File System.",
+          "options": ["mkfs", "fsck", "tune2fs", "resize2fs"],
+          "correctIndex": 0,
+          "link": "https://linux.die.net/man/8/mkfs"
+        },
+        {
+          "question": "What filesystem provides kernel information?",
+          "answer": "Procfs",
+          "explanation": "Procfs is a virtual file system that exposes kernel and process information.",
+          "example": "cat /proc/cpuinfo",
+          "hint": "Mounted at /proc.",
+          "options": ["Ext4", "Procfs", "Sysfs", "NTFS"],
+          "correctIndex": 1,
+          "link": "https://en.wikipedia.org/wiki/Procfs"
+        }
+      ],
+      "advanced": [
+        {
+          "question": "What file defines auto-mounted file systems?",
+          "answer": "/etc/fstab",
+          "explanation": "The /etc/fstab file lists file systems to mount at boot.",
+          "example": "cat /etc/fstab",
+          "hint": "File System Table.",
+          "options": ["/etc/mtab", "/etc/fstab", "/proc/mounts", "/etc/passwd"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/5/fstab"
+        },
+        {
+          "question": "What command forces disk buffer writes?",
+          "answer": "sync",
+          "explanation": "The sync command flushes file system buffers to disk.",
+          "example": "sync",
+          "hint": "Ensures data is written.",
+          "options": ["sync", "fsck", "flush", "write"],
+          "correctIndex": 0,
+          "link": "https://linux.die.net/man/8/sync"
+        }
+      ]
+    },
+    "File Management": {
+      "basic": [
+        {
+          "question": "What command creates a file?",
+          "answer": "touch",
+          "explanation": "The touch command creates empty files or updates timestamps.",
+          "example": "touch newfile.txt",
+          "hint": "Also updates timestamps.",
+          "options": ["cat", "touch", "cp", "mv"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/touch"
+        }
+      ],
+      "intermediate": [
+        {
+          "question": "What command finds files by name?",
+          "answer": "find",
+          "explanation": "The find command searches for files in a directory hierarchy.",
+          "example": "find / -name file.txt",
+          "hint": "Searches by criteria.",
+          "options": ["locate", "find", "grep", "ls"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/find"
+        }
+      ],
+      "advanced": [
+        {
+          "question": "What command archives files with compression?",
+          "answer": "tar -zcf",
+          "explanation": "The tar -zcf command creates a compressed tar archive using gzip.",
+          "example": "tar -zcf archive.tar.gz dir/",
+          "hint": "-z for gzip, -c for create.",
+          "options": ["tar -zcf", "zip", "gzip", "bzip2"],
+          "correctIndex": 0,
+          "link": "https://linux.die.net/man/1/tar"
+        }
+      ]
+    },
+    "Permissions": {
+      "basic": [
+        {
+          "question": "What command changes file permissions?",
+          "answer": "chmod",
+          "explanation": "The chmod command modifies file or directory permissions.",
+          "example": "chmod 755 script.sh",
+          "hint": "Change Mode.",
+          "options": ["chown", "chmod", "chgrp", "setfacl"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/chmod"
+        }
+      ],
+      "intermediate": [
+        {
+          "question": "What command sets the sticky bit?",
+          "answer": "chmod +t",
+          "explanation": "The sticky bit restricts deletion of files in a directory to their owners.",
+          "example": "chmod +t /tmp",
+          "hint": "Used in /tmp.",
+          "options": ["chmod +s", "chmod +t", "chmod 777", "chown"],
+          "correctIndex": 1,
+          "link": "https://en.wikipedia.org/wiki/Sticky_bit"
+        }
+      ],
+      "advanced": [
+        {
+          "question": "What command manages ACLs?",
+          "answer": "setfacl",
+          "explanation": "setfacl sets or modifies Access Control Lists for fine-grained permissions.",
+          "example": "setfacl -m u:user:rwx file",
+          "hint": "Access Control Lists.",
+          "options": ["getfacl", "setfacl", "chmod", "chown"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/setfacl"
+        }
+      ]
+    },
+    "Processes": {
+      "basic": [
+        {
+          "question": "What command runs a job in the background?",
+          "answer": "&",
+          "explanation": "Appending & runs a command in the background.",
+          "example": "sleep 10 &",
+          "hint": "At end of command.",
+          "options": ["bg", "&", "fg", "jobs"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/bash"
+        }
+      ],
+      "intermediate": [
+        {
+          "question": "What command monitors processes in real-time?",
+          "answer": "top",
+          "explanation": "The top command displays real-time process information.",
+          "example": "top",
+          "hint": "Dynamic process view.",
+          "options": ["ps", "top", "htop", "free"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/top"
+        }
+      ],
+      "advanced": [
+        {
+          "question": "What command adjusts process priority?",
+          "answer": "nice",
+          "explanation": "The nice command sets the priority of a new process.",
+          "example": "nice -n 10 command",
+          "hint": "Controls CPU priority.",
+          "options": ["nice", "renice", "chrt", "top"],
+          "correctIndex": 0,
+          "link": "https://linux.die.net/man/1/nice"
+        }
+      ]
+    },
+    "Networking": {
+      "basic": [
+        {
+          "question": "What command tests network connectivity?",
+          "answer": "ping",
+          "explanation": "The ping command tests connectivity to a host using ICMP packets.",
+          "example": "ping google.com",
+          "hint": "Checks if host is reachable.",
+          "options": ["ping", "traceroute", "netstat", "curl"],
+          "correctIndex": 0,
+          "link": "https://linux.die.net/man/8/ping"
+        }
+      ],
+      "intermediate": [
+        {
+          "question": "What command displays network interfaces?",
+          "answer": "ifconfig",
+          "explanation": "The ifconfig command displays network interface configuration.",
+          "example": "ifconfig eth0",
+          "hint": "Or use ip addr.",
+          "options": ["ip route", "ifconfig", "netstat", "iwconfig"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/8/ifconfig"
+        }
+      ],
+      "advanced": [
+        {
+          "question": "What command captures network packets?",
+          "answer": "tcpdump",
+          "explanation": "The tcpdump command captures and analyzes network packets.",
+          "example": "tcpdump -i eth0",
+          "hint": "Packet sniffer.",
+          "options": ["tcpdump", "wireshark", "nmap", "netcat"],
+          "correctIndex": 0,
+          "link": "https://linux.die.net/man/8/tcpdump"
+        }
+      ]
+    },
+    "Package Management": {
+      "basic": [
+        {
+          "question": "What command updates package lists on Debian?",
+          "answer": "apt-get update",
+          "explanation": "The apt-get update command refreshes the package repository metadata.",
+          "example": "apt-get update",
+          "hint": "Before upgrade.",
+          "options": ["apt-get upgrade", "apt-get update", "dpkg -i", "apt-cache"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/8/apt-get"
+        }
+      ],
+      "intermediate": [
+        {
+          "question": "What command installs an RPM package?",
+          "answer": "rpm -i",
+          "explanation": "The rpm -i command installs an RPM package.",
+          "example": "rpm -i package.rpm",
+          "hint": "-ivh for verbose.",
+          "options": ["rpm -i", "yum install", "dpkg -i", "apt-get install"],
+          "correctIndex": 0,
+          "link": "https://linux.die.net/man/8/rpm"
+        }
+      ],
+      "advanced": [
+        {
+          "question": "What command rebuilds the RPM database?",
+          "answer": "rpm --rebuilddb",
+          "explanation": "The rpm --rebuilddb command rebuilds the RPM database if corrupted.",
+          "example": "rpm --rebuilddb",
+          "hint": "Fixes RPM issues.",
+          "options": ["rpm -qa", "rpm --rebuilddb", "yum update", "dnf clean"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/8/rpm"
+        }
+      ]
+    },
+    "Shell Scripting": {
+      "basic": [
+        {
+          "question": "What is the shebang line?",
+          "answer": "#!/bin/bash",
+          "explanation": "The shebang line specifies the interpreter for a script.",
+          "example": "#!/bin/bash\necho Hello",
+          "hint": "First line with #!.",
+          "options": ["#!/bin/sh", "#!/bin/bash", "#comment", "#bash"],
+          "correctIndex": 1,
+          "link": "https://en.wikipedia.org/wiki/Shebang_(Unix)"
+        }
+      ],
+      "intermediate": [
+        {
+          "question": "What command compares numbers in a script?",
+          "answer": "[ $a -eq $b ]",
+          "explanation": "-eq tests if two numbers are equal.",
+          "example": "if [ $a -eq $b ]; then echo equal; fi",
+          "hint": "-eq for equal.",
+          "options": ["[ $a = $b ]", "[ $a -eq $b ]", "[ $a == $b ]", "[ $a != $b ]"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/test"
+        }
+      ],
+      "advanced": [
+        {
+          "question": "What command debugs a script?",
+          "answer": "bash -x",
+          "explanation": "The bash -x option traces script execution.",
+          "example": "bash -x script.sh",
+          "hint": "Trace mode.",
+          "options": ["bash -v", "bash -x", "sh -d", "debug"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/bash"
+        }
+      ]
+    }
+  }
+}
