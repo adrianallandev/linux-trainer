@@ -65,59 +65,60 @@ function App() {
   };
 
   const selectRandomQuestion = () => {
-    let attempts = 0;
-    while (attempts < 100) { // Safety to avoid infinite loop
-      attempts++;
-      const weakSections = getWeakSections();
-      const halfLength = Math.ceil(weakSections.length / 2);
-      const isWeakBias = Math.random() < 0.7;
-      const sectionPool = isWeakBias ? weakSections.slice(0, halfLength) : weakSections;
-      const section = sectionPool[Math.floor(Math.random() * sectionPool.length)];
+    // Collect all weak and unanswered questions across all sections and levels
+    const allQuestions = [];
+    const weakSections = getWeakSections();
+    const sectionPool = weakSections; // Consider all sections, prioritizing weaker ones
 
+    sectionPool.forEach(section => {
       const levels = Object.keys(questionsData.sections[section]);
-      const level = levels[Math.floor(Math.random() * levels.length)];
-      const qs = questionsData.sections[section][level];
+      levels.forEach(level => {
+        const qs = questionsData.sections[section][level];
+        // Weak questions in this section/level
+        const weakIndices = Array.from(weakQuestions)
+          .filter(id => id.startsWith(`${section}-${level}-`))
+          .map(id => parseInt(id.split('-')[2]));
+        // Answered questions in this section/level
+        const answeredIndices = Array.from(answeredQuestions)
+          .filter(id => id.startsWith(`${section}-${level}-`))
+          .map(id => parseInt(id.split('-')[2]));
+        // Unanswered indices
+        const unansweredIndices = Array.from({ length: qs.length }, (_, i) => i)
+          .filter(i => !answeredIndices.includes(i) || weakIndices.includes(i));
 
-      // Weak questions in this section/level
-      const weakIndices = Array.from(weakQuestions)
-        .filter(id => id.startsWith(`${section}-${level}-`))
-        .map(id => parseInt(id.split('-')[2]));
+        unansweredIndices.forEach(index => {
+          allQuestions.push({ section, level, index });
+        });
+      });
+    });
 
-      // Answered questions in this section/level
-      const answeredIndices = Array.from(answeredQuestions)
-        .filter(id => id.startsWith(`${section}-${level}-`))
-        .map(id => parseInt(id.split('-')[2]));
-
-      // Unanswered indices
-      const unansweredIndices = Array.from({ length: qs.length }, (_, i) => i)
-        .filter(i => !answeredIndices.includes(i));
-
-      if (weakIndices.length > 0 || unansweredIndices.length > 0) {
-        let index;
-        if (weakIndices.length > 0 && Math.random() < 0.7) {
-          index = weakIndices[Math.floor(Math.random() * weakIndices.length)];
-        } else if (unansweredIndices.length > 0) {
-          index = unansweredIndices[Math.floor(Math.random() * unansweredIndices.length)];
-        } else {
-          continue;
-        }
-
-        const q = qs[index];
-        setSelectedSection(section);
-        setSelectedLevel(level);
-        setCurrentQuestion(q);
-        setQuestionId(`${section}-${level}-${index}`);
-        setShowAnswer(false);
-        setShowHint(false);
-        setShowExplanation(false);
-        setUsedHint(false);
-        setSelectedOption(null);
-        return;
-      }
+    if (allQuestions.length === 0) {
+      // No unanswered or weak questions left
+      setCurrentQuestion(null);
+      alert('All questions have been answered correctly without hints! Great job!');
+      return;
     }
-    // If no questions found after attempts, set to null or show message
-    setCurrentQuestion(null);
-    alert('All questions have been answered correctly! Great job!');
+
+    // Randomly select from available questions, prioritizing weak ones
+    const weakQuestionsAvailable = allQuestions.filter(q => 
+      weakQuestions.has(`${q.section}-${q.level}-${q.index}`)
+    );
+    const selectedPool = weakQuestionsAvailable.length > 0 && Math.random() < 0.7 
+      ? weakQuestionsAvailable 
+      : allQuestions;
+
+    const { section, level, index } = selectedPool[Math.floor(Math.random() * selectedPool.length)];
+    const q = questionsData.sections[section][level][index];
+
+    setSelectedSection(section);
+    setSelectedLevel(level);
+    setCurrentQuestion(q);
+    setQuestionId(`${section}-${level}-${index}`);
+    setShowAnswer(false);
+    setShowHint(false);
+    setShowExplanation(false);
+    setUsedHint(false);
+    setSelectedOption(null);
   };
 
   const handleHint = () => {
@@ -156,7 +157,7 @@ function App() {
 
   return (
     <div style={{ padding: '20px', textAlign: 'center' }}>
-      <h1>Linux Trainer App</h1>
+      <h1>Linux Trainer App2</h1>
       <p>Overall Progress: {progress}%</p>
       <button onClick={selectRandomQuestion}>Start/Next Question</button>
       {currentQuestion && (
