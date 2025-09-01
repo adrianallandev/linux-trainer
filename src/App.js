@@ -65,53 +65,59 @@ function App() {
   };
 
   const selectRandomQuestion = () => {
-    const weakSections = getWeakSections();
-    const halfLength = Math.ceil(weakSections.length / 2);
-    const isWeakBias = Math.random() < 0.7;
-    const sectionPool = isWeakBias ? weakSections.slice(0, halfLength) : weakSections;
-    const section = sectionPool[Math.floor(Math.random() * sectionPool.length)];
+    let attempts = 0;
+    while (attempts < 100) { // Safety to avoid infinite loop
+      attempts++;
+      const weakSections = getWeakSections();
+      const halfLength = Math.ceil(weakSections.length / 2);
+      const isWeakBias = Math.random() < 0.7;
+      const sectionPool = isWeakBias ? weakSections.slice(0, halfLength) : weakSections;
+      const section = sectionPool[Math.floor(Math.random() * sectionPool.length)];
 
-    const levels = Object.keys(questionsData.sections[section]);
-    const level = levels[Math.floor(Math.random() * levels.length)];
-    const qs = questionsData.sections[section][level];
+      const levels = Object.keys(questionsData.sections[section]);
+      const level = levels[Math.floor(Math.random() * levels.length)];
+      const qs = questionsData.sections[section][level];
 
-    // Get weak questions in this section/level
-    const weakIndices = Array.from(weakQuestions)
-      .filter(id => id.startsWith(`${section}-${level}-`))
-      .map(id => parseInt(id.split('-')[2]));
+      // Weak questions in this section/level
+      const weakIndices = Array.from(weakQuestions)
+        .filter(id => id.startsWith(`${section}-${level}-`))
+        .map(id => parseInt(id.split('-')[2]));
 
-    // Get answered questions in this section/level
-    const answeredIndices = Array.from(answeredQuestions)
-      .filter(id => id.startsWith(`${section}-${level}-`))
-      .map(id => parseInt(id.split('-')[2]));
+      // Answered questions in this section/level
+      const answeredIndices = Array.from(answeredQuestions)
+        .filter(id => id.startsWith(`${section}-${level}-`))
+        .map(id => parseInt(id.split('-')[2]));
 
-    // Prioritize weak questions (incorrect or used hint)
-    let index;
-    if (weakIndices.length > 0) {
-      // Select from weak questions if available
-      index = weakIndices[Math.floor(Math.random() * weakIndices.length)];
-    } else {
-      // Select from unanswered questions
+      // Unanswered indices
       const unansweredIndices = Array.from({ length: qs.length }, (_, i) => i)
         .filter(i => !answeredIndices.includes(i));
-      if (unansweredIndices.length > 0) {
-        index = unansweredIndices[Math.floor(Math.random() * unansweredIndices.length)];
-      } else {
-        // If all questions in this section/level answered, fall back to any question
-        index = Math.floor(Math.random() * qs.length);
+
+      if (weakIndices.length > 0 || unansweredIndices.length > 0) {
+        let index;
+        if (weakIndices.length > 0 && Math.random() < 0.7) {
+          index = weakIndices[Math.floor(Math.random() * weakIndices.length)];
+        } else if (unansweredIndices.length > 0) {
+          index = unansweredIndices[Math.floor(Math.random() * unansweredIndices.length)];
+        } else {
+          continue;
+        }
+
+        const q = qs[index];
+        setSelectedSection(section);
+        setSelectedLevel(level);
+        setCurrentQuestion(q);
+        setQuestionId(`${section}-${level}-${index}`);
+        setShowAnswer(false);
+        setShowHint(false);
+        setShowExplanation(false);
+        setUsedHint(false);
+        setSelectedOption(null);
+        return;
       }
     }
-
-    const q = qs[index];
-    setSelectedSection(section);
-    setSelectedLevel(level);
-    setCurrentQuestion(q);
-    setQuestionId(`${section}-${level}-${index}`);
-    setShowAnswer(false);
-    setShowHint(false);
-    setShowExplanation(false);
-    setUsedHint(false);
-    setSelectedOption(null);
+    // If no questions found after attempts, set to null or show message
+    setCurrentQuestion(null);
+    alert('All questions have been answered correctly! Great job!');
   };
 
   const handleHint = () => {

@@ -31,6 +31,86 @@
           "options": ["dir", "ls", "find", "pwd"],
           "correctIndex": 1,
           "link": "https://linux.die.net/man/1/ls"
+        },
+        {
+          "question": "What command is used to display the operating system name?",
+          "answer": "uname",
+          "explanation": "The uname command displays system information, including the operating system name.",
+          "example": "uname -s\nOutput: Linux",
+          "hint": "Uname for Unix name.",
+          "options": ["os", "unix", "kernel", "uname"],
+          "correctIndex": 3,
+          "link": "https://linux.die.net/man/1/uname"
+        },
+        {
+          "question": "What command is used to display the unix version?",
+          "answer": "uname -r",
+          "explanation": "The uname -r command displays the kernel release version.",
+          "example": "uname -r\nOutput: 5.15.0-60-generic",
+          "hint": "Kernel release.",
+          "options": ["uname -r", "uname -n", "uname -t", "kernel"],
+          "correctIndex": 0,
+          "link": "https://linux.die.net/man/1/uname"
+        },
+        {
+          "question": "What is the default shell in Linux?",
+          "answer": "bash",
+          "explanation": "The 'bash' or Bourne Again SHell is the default shell for most Linux distributions.",
+          "example": "echo $SHELL\nOutput: /bin/bash",
+          "hint": "Bourne Again SHell.",
+          "options": ["bash", "sh", "ksh", "csh"],
+          "correctIndex": 0,
+          "link": "https://en.wikipedia.org/wiki/Bash_(Unix_shell)"
+        },
+        {
+          "question": "Which command is used to display the current date and time in Linux?",
+          "answer": "date",
+          "explanation": "The date command displays or sets the system date and time.",
+          "example": "date",
+          "hint": "Current date and time.",
+          "options": ["date", "time", "calendar", "clock"],
+          "correctIndex": 0,
+          "link": "https://linux.die.net/man/1/date"
+        },
+        {
+          "question": "Which command is used to display the system uptime in Linux?",
+          "answer": "uptime",
+          "explanation": "The uptime command shows how long the system has been running.",
+          "example": "uptime",
+          "hint": "System runtime.",
+          "options": ["uptime", "time", "sys", "info"],
+          "correctIndex": 0,
+          "link": "https://linux.die.net/man/1/uptime"
+        },
+        {
+          "question": "Which command is used to display the manual pages in Linux?",
+          "answer": "man",
+          "explanation": "The man command provides detailed documentation for Linux commands.",
+          "example": "man ls",
+          "hint": "Manual pages.",
+          "options": ["help", "man", "info", "guide"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/man"
+        },
+        {
+          "question": "Which is the core of the operating system?",
+          "answer": "kernel",
+          "explanation": "",
+          "example": "",
+          "hint": "",
+          "options": ["shell", "kernel", "command", "script"],
+          "correctIndex": 1,
+          "link": ""
+        },
+        {
+          "question": "Which among the following interacts directly with system hardware?",
+          "answer": "Kernel",
+          "explanation": "",
+          "example": "",
+          "hint": "",
+          "options": ["Shell", "Commands", "Kernel", "Applications"],
+          "correctIndex": 2,
+          "link": ""
         }
       ],
       "intermediate": [
@@ -53,6 +133,16 @@
           "options": ["stop", "kill <PID>", "end", "terminate"],
           "correctIndex": 1,
           "link": "https://linux.die.net/man/1/kill"
+        },
+        {
+          "question": "What command is used to display the processes running in Linux?",
+          "answer": "ps",
+          "explanation": "",
+          "example": "ps aux",
+          "hint": "Process status.",
+          "options": ["ps", "process", "run", "task"],
+          "correctIndex": 0,
+          "link": "https://linux.die.net/man/1/ps"
         }
       ],
       "advanced": [
@@ -75,6 +165,56 @@
           "options": ["0", "1", "2", "10"],
           "correctIndex": 1,
           "link": "https://en.wikipedia.org/wiki/Init"
+        },
+        {
+          "question": "What does the dmesg command show?",
+          "answer": "kernel log messages",
+          "explanation": "",
+          "example": "dmesg",
+          "hint": "Kernel logs.",
+          "options": ["Shows user login logoff attempts", "Shows the syslog file for info messages", "kernel log messages", "Shows the daemon log messages"],
+          "correctIndex": 2,
+          "link": "https://linux.die.net/man/1/dmesg"
+        },
+        {
+          "question": "The command “mknod myfifo b 4 16” will?",
+          "answer": "Will create a block device if user is root",
+          "explanation": "",
+          "example": "mknod myfifo b 4 16",
+          "hint": "Make node for device.",
+          "options": ["Will create a block device if user is root", "Will create a block device for all users", "Will create a FIFO if user is not root", "None of the mentioned"],
+          "correctIndex": 0,
+          "link": "https://linux.die.net/man/1/mknod"
+        },
+        {
+          "question": "Which command is used to set terminal IO characteristic?",
+          "answer": "stty",
+          "explanation": "",
+          "example": "stty -echo",
+          "hint": "Set terminal.",
+          "options": ["tty", "ctty", "ptty", "stty"],
+          "correctIndex": 3,
+          "link": "https://linux.die.net/man/1/stty"
+        },
+        {
+          "question": "Which command is used to record a user login session in a file?",
+          "answer": "script",
+          "explanation": "",
+          "example": "script session.log",
+          "hint": "Record session.",
+          "options": ["macro", "read", "script", "none of the mentioned"],
+          "correctIndex": 2,
+          "link": "https://linux.die.net/man/1/script"
+        },
+        {
+          "question": "Using which command you find resource limits to the session?",
+          "answer": "ulimit",
+          "explanation": "",
+          "example": "ulimit -a",
+          "hint": "User limit.",
+          "options": ["rlimit", "ulimit", "setrlimit", "getrlimit"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/ulimit"
         }
       ]
     },
@@ -99,6 +239,36 @@
           "options": ["umount", "fsck", "mount", "mkfs"],
           "correctIndex": 2,
           "link": "https://linux.die.net/man/8/mount"
+        },
+        {
+          "question": "Which symbol represents the root directory in Linux?",
+          "answer": "/",
+          "explanation": "In Linux, the root directory is represented by a forward slash (/).",
+          "example": "cd /",
+          "hint": "Root symbol.",
+          "options": ["/", "\\", "~", "!"],
+          "correctIndex": 0,
+          "link": "https://en.wikipedia.org/wiki/Root_directory"
+        },
+        {
+          "question": "What command is used to display disk usage of files and directories in Linux?",
+          "answer": "du",
+          "explanation": "",
+          "example": "du -h",
+          "hint": "Disk usage.",
+          "options": ["df", "du", "disk", "usage"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/du"
+        },
+        {
+          "question": "Which command is used to display disk consumption of a specific directory",
+          "answer": "du",
+          "explanation": "",
+          "example": "du /home",
+          "hint": "Disk usage.",
+          "options": ["du", "ds", "dd", "dds"],
+          "correctIndex": 0,
+          "link": "https://linux.die.net/man/1/du"
         }
       ],
       "intermediate": [
@@ -157,6 +327,86 @@
           "options": ["cat", "touch", "cp", "mv"],
           "correctIndex": 1,
           "link": "https://linux.die.net/man/1/touch"
+        },
+        {
+          "question": "What command is used to display the contents of a file?",
+          "answer": "cat",
+          "explanation": "The 'cat' command is used to display the contents of a file.",
+          "example": "cat file.txt",
+          "hint": "Concatenate and display.",
+          "options": ["show", "display", "print", "cat"],
+          "correctIndex": 3,
+          "link": "https://linux.die.net/man/1/cat"
+        },
+        {
+          "question": "What command is used to remove a directory?",
+          "answer": "rmdir",
+          "explanation": "The 'rmdir' command is used to remove empty directories.",
+          "example": "rmdir dir",
+          "hint": "Remove directory.",
+          "options": ["rmdir", "remove", "del", "delete"],
+          "correctIndex": 0,
+          "link": "https://linux.die.net/man/1/rmdir"
+        },
+        {
+          "question": "What command is used to copy files or directories in Linux?",
+          "answer": "cp",
+          "explanation": "",
+          "example": "cp file1 file2",
+          "hint": "Copy.",
+          "options": ["copy", "cp", "duplicate", "replicate"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/cp"
+        },
+        {
+          "question": "What command is used to move or rename files or directories in Linux?",
+          "answer": "mv",
+          "explanation": "",
+          "example": "mv file1 file2",
+          "hint": "Move.",
+          "options": ["move", "mv", "rename", "shift"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/mv"
+        },
+        {
+          "question": "What command is used to delete files or directories in Linux?",
+          "answer": "rm",
+          "explanation": "",
+          "example": "rm file",
+          "hint": "Remove.",
+          "options": ["delete", "rm", "remove", "erase"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/rm"
+        },
+        {
+          "question": "Which command is used to print a file",
+          "answer": "lpr",
+          "explanation": "",
+          "example": "lpr file.txt",
+          "hint": "Line printer.",
+          "options": ["print", "ptr", "lpr", "none of the mentioned"],
+          "correctIndex": 2,
+          "link": "https://linux.die.net/man/1/lpr"
+        },
+        {
+          "question": "How do you list the hidden files in a directory?",
+          "answer": "ls -a",
+          "explanation": "The 'ls -a' command lists all files, including hidden ones.",
+          "example": "ls -a",
+          "hint": "List all.",
+          "options": ["ls", "ls -a", "dir /hidden", "ls -h"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/ls"
+        },
+        {
+          "question": "Which command is used to display all the files including hidden files in your current and its subdirectories ?",
+          "answer": "ls -aR",
+          "explanation": "",
+          "example": "ls -aR",
+          "hint": "List all recursive.",
+          "options": ["ls -aR", "ls -a", "ls -R", "ls -l"],
+          "correctIndex": 0,
+          "link": "https://linux.die.net/man/1/ls"
         }
       ],
       "intermediate": [
@@ -169,6 +419,96 @@
           "options": ["locate", "find", "grep", "ls"],
           "correctIndex": 1,
           "link": "https://linux.die.net/man/1/find"
+        },
+        {
+          "question": "How do you print the first 10 lines of a file named 'file.txt'?",
+          "answer": "head -10 file.txt",
+          "explanation": "The 'head' command with the '-10' option prints the first 10 lines of the specified file.",
+          "example": "head -10 file.txt",
+          "hint": "Head of file.",
+          "options": ["head -10 file.txt", "first -10 file.txt", "cat -10 file.txt", "print -10 file.txt"],
+          "correctIndex": 0,
+          "link": "https://linux.die.net/man/1/head"
+        },
+        {
+          "question": "Which command displays a file's type?",
+          "answer": "file",
+          "explanation": "The 'file' command is used to determine the type of a file.",
+          "example": "file image.jpg",
+          "hint": "File type.",
+          "options": ["showtype", "displaytype", "cattype", "file"],
+          "correctIndex": 3,
+          "link": "https://linux.die.net/man/1/file"
+        },
+        {
+          "question": "What is the command to search for a pattern in a file?",
+          "answer": "grep",
+          "explanation": "The 'grep' command searches files for a specified pattern.",
+          "example": "grep 'pattern' file.txt",
+          "hint": "Global regular expression print.",
+          "options": ["search", "find", "grep", "locate"],
+          "correctIndex": 2,
+          "link": "https://linux.die.net/man/1/grep"
+        },
+        {
+          "question": "Which command is used to find files in Linux?",
+          "answer": "find",
+          "explanation": "",
+          "example": "find . -name '*.txt'",
+          "hint": "Find files.",
+          "options": ["search", "find", "locate", "seek"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/find"
+        },
+        {
+          "question": "Which option of ls command used to view file inode number",
+          "answer": "-i",
+          "explanation": "",
+          "example": "ls -i",
+          "hint": "Inode.",
+          "options": ["-l", "-o", "-a", "-i"],
+          "correctIndex": 3,
+          "link": "https://linux.die.net/man/1/ls"
+        },
+        {
+          "question": "Find / -name ‘*’ will",
+          "answer": "List all files and directories recursively starting from /",
+          "explanation": "",
+          "example": "find / -name '*'",
+          "hint": "Find all.",
+          "options": ["List all files and directories recursively starting from /", "List a file named * in /", "List all files in / directory", "List all files and directories in / directory"],
+          "correctIndex": 0,
+          "link": "https://linux.die.net/man/1/find"
+        },
+        {
+          "question": "Which command is used to extract a column from a text file",
+          "answer": "cut",
+          "explanation": "",
+          "example": "cut -d' ' -f1 file.txt",
+          "hint": "Cut column.",
+          "options": ["paste", "get", "cut", "tar"],
+          "correctIndex": 2,
+          "link": "https://linux.die.net/man/1/cut"
+        },
+        {
+          "question": "Command used to count number of character in a file is",
+          "answer": "wc",
+          "explanation": "",
+          "example": "wc -c file.txt",
+          "hint": "Word count.",
+          "options": ["grep", "wc", "count", "cut"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/wc"
+        },
+        {
+          "question": "Which of the following commands will allow the user to search contents of a file for a particular pattern",
+          "answer": "grep",
+          "explanation": "",
+          "example": "grep pattern file",
+          "hint": "Grep pattern.",
+          "options": ["touch", "grep", "find", "ls"],
+          "correctIndex": 1,
+          "link": "https://linux.die.net/man/1/grep"
         }
       ],
       "advanced": [
@@ -195,6 +535,26 @@
           "options": ["chown", "chmod", "chgrp", "setfacl"],
           "correctIndex": 1,
           "link": "https://linux.die.net/man/1/chmod"
+        },
+        {
+          "question": "What command is used to change file permissions in Linux?",
+          "answer": "chmod",
+          "explanation": "",
+          "example": "chmod 755 file",
+          "hint": "Change mode.",
+          "options": ["chmod", "perm", "change", "modify"],
+          "correctIndex": 0,
+          "link": "https://linux.die.net/man/1/chmod"
+        },
+        {
+          "question": "What does the command chmod 777 filename do?",
+          "answer": "Gives read, write, and execute permissions to everyone for that file",
+          "explanation": "Gives read, write, and execute permissions to everyone for that file.",
+          "example": "chmod 777 filename",
+          "hint": "Full permissions.",
+          "options": ["Changes the owner of the file", "Deletes the file", "Gives read, write, and execute permissions to everyone for that file", "Hides the file"],
+          "correctIndex": 2,
+          "link": "https://linux.die.net/man/1/chmod"
         }
       ],
       "intermediate": [
@@ -207,6 +567,26 @@
           "options": ["chmod +s", "chmod +t", "chmod 777", "chown"],
           "correctIndex": 1,
           "link": "https://en.wikipedia.org/wiki/Sticky_bit"
+        },
+        {
+          "question": "Which of the following commands can be used to change default permissions for files and directories at the time of creation",
+          "answer": "umask",
+          "explanation": "",
+          "example": "umask 022",
+          "hint": "User mask.",
+          "options": ["chmod", "chown", "umask", "chgrp"],
+          "correctIndex": 2,
+          "link": "https://linux.die.net/man/1/umask"
+        },
+        {
+          "question": "Which option of rm command is used to remove a directory with all its sub directories",
+          "answer": "-r",
+          "explanation": "",
+          "example": "rm -r dir",
+          "hint": "Recursive remove.",
+          "options": ["-b", "-o", "-p", "-r"],
+          "correctIndex": 3,
+          "link": "https://linux.die.net/man/1/rm"
         }
       ],
       "advanced": [
@@ -233,6 +613,16 @@
           "options": ["bg", "&", "fg", "jobs"],
           "correctIndex": 1,
           "link": "https://linux.die.net/man/1/bash"
+        },
+        {
+          "question": "Which command is used to see the running processes in Linux?",
+          "answer": "top",
+          "explanation": "The 'top' command displays a live, updating view of the running processes.",
+          "example": "top",
+          "hint": "Top processes.",
+          "options": ["process", "run", "top", "exec"],
+          "correctIndex": 2,
+          "link": "https://linux.die.net/man/1/top"
         }
       ],
       "intermediate": [
@@ -271,6 +661,16 @@
           "options": ["ping", "traceroute", "netstat", "curl"],
           "correctIndex": 0,
           "link": "https://linux.die.net/man/8/ping"
+        },
+        {
+          "question": "What command is used to display the network interfaces in Linux?",
+          "answer": "ifconfig",
+          "explanation": "",
+          "example": "ifconfig",
+          "hint": "Interface config.",
+          "options": ["ifconfig", "net", "interface", "config"],
+          "correctIndex": 0,
+          "link": "https://linux.die.net/man/8/ifconfig"
         }
       ],
       "intermediate": [
@@ -371,6 +771,16 @@
           "options": ["bash -v", "bash -x", "sh -d", "debug"],
           "correctIndex": 1,
           "link": "https://linux.die.net/man/1/bash"
+        },
+        {
+          "question": "The system calls in UNIX is written using which language",
+          "answer": "c",
+          "explanation": "",
+          "example": "",
+          "hint": "",
+          "options": ["c", "c++", "Assembly Language", "Fortan"],
+          "correctIndex": 0,
+          "link": ""
         }
       ]
     }
